@@ -1,0 +1,7 @@
+{
+  "name": "Candidates",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
