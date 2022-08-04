@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Candidate } from './candidates/candidate';
-import { Observable, of, forkJoin, combineLatest } from 'rxjs';
+import { Observable, of, combineLatest } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';

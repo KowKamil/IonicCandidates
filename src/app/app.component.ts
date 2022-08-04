@@ -8,13 +8,13 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Candidates',
-      url: '/folder/Candidates',
-      icon: 'heart',
+      url: '/candidates',
+      icon: 'list',
     },
     {
-      title: 'Dashboard',
-      url: '/folder/Dashboard',
-      icon: 'mail',
+      title: 'Top Candidates',
+      url: '/dashboard',
+      icon: 'people',
     },
   ];
   constructor() {}
