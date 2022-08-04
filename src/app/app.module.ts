@@ -9,9 +9,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CandidatesComponent } from './candidates/candidates.component';
+import { CandidateDetailComponent } from './candidate-detail/candidate-detail.component';
+import { TopCandidatesComponent } from './top-candidates/top-candidates.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    CandidatesComponent,
+    CandidateDetailComponent,
+    TopCandidatesComponent,
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
