@@ -1,1 +1,9 @@
-<h2>{{candidate.firstName | uppercase}}&nbsp;{{candidate.lastName | uppercase}}</h2>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+       <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{candidate?.firstName ?? 'firstName null'}}&nbsp;{{candidate?.lastName ?? 'lastName null'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+

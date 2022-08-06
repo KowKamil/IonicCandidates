@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Candidate } from './candidate';
 import { CandidateService } from '../candidate.service';
 import { MessageService } from '../message.service';
+import { combineLatest, from, Observable, of, Subject } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-candidates',
@@ -10,10 +13,31 @@ import { MessageService } from '../message.service';
 })
 export class CandidatesComponent implements OnInit {
   candidates: Candidate[] = [];
+  public searchField: FormControl;
+  public searchedCandidates: Candidate[];
+
   constructor(
     private candidateService: CandidateService,
     private messageService: MessageService
-  ) {}
+  ) {
+    this.searchField = new FormControl('');
+    const searchTerm$: Observable<string> = this.searchField.valueChanges.pipe(
+      startWith(this.searchField.value)
+    );
+
+    /*combineLatest([of(this.candidates), searchTerm$])
+      .pipe(
+        map(([candidates, searchTerm]) =>
+          candidates.filter(
+            (candidate) =>
+              searchTerm === '' ||
+              candidate.firstName.includes(searchTerm) ||
+              candidate.lastName.includes(searchTerm)
+          )
+        )
+      )
+      .subscribe((c) => (this.searchedCandidates = c));*/
+  }
 
   ngOnInit() {
     this.getCandidates();

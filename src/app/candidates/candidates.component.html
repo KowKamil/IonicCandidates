@@ -4,7 +4,7 @@
        <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Title</ion-title>
-    <ion-searchbar placeholder="Search"></ion-searchbar>
+    <ion-searchbar [formControl]="searchField" placeholder="Search"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
 
   <div id="container">
     <ion-list id="inbox-list" *ngFor="let c of candidates">
-      <ion-button>
+      <ion-button routerLink="/detail/{{c.id}}">
         <ion-badge>{{c.id}}</ion-badge>&nbsp;
         <ion-label>{{c.firstName}}&nbsp;{{c.lastName}}</ion-label>
       </ion-button>
