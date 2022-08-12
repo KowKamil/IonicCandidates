@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CandidateDetailComponent } from './candidate-detail.component';
 
 describe('CandidateDetailComponent', () => {
@@ -9,8 +9,8 @@ describe('CandidateDetailComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CandidateDetailComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [CandidateDetailComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CandidateDetailComponent);

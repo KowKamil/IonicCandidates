@@ -1,9 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-       <ion-menu-button></ion-menu-button>
+       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{candidate?.firstName ?? 'firstName null'}}&nbsp;{{candidate?.lastName ?? 'lastName null'}}</ion-title>
+    <ion-title>{{candidate?.firstName ?? 'firstName unknown'}}&nbsp;{{candidate?.lastName ?? 'lastName unknown'}}</ion-title>
+      <ion-buttons slot="secondary">
+        <ion-button type="submit" (click)="save()">Save</ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <form [formGroup]="ionicForm">
+    <ion-item>
+      <ion-label>id:</ion-label>
+      <ion-input disabled=true type="number" value = "{{candidate?.id ?? 'id unknown'}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>First name:</ion-label>
+      <ion-input formControlName="firstName" type="text" value = "{{candidate?.firstName ?? 'firstName unknown'}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Last name</ion-label>
+      <ion-input formControlName="lastName" type="text" value="{{candidate?.lastName ?? 'lastName unknown'}}"></ion-input>
+    </ion-item>
+  </form>
+</ion-content>
+
+
+
+
 
