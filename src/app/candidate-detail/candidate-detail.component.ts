@@ -10,13 +10,15 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CandidateService } from '../candidate.service';
 
+//TODO: fix editing so that it's results are visible on candidates view
 @Component({
   selector: 'app-candidate-detail',
   templateUrl: './candidate-detail.component.html',
   styleUrls: ['./candidate-detail.component.scss'],
 })
 export class CandidateDetailComponent implements OnInit {
-  @Input() public candidate?: Candidate;
+  //@Input() public candidate?: Candidate;
+  candidate: Candidate | undefined;
 
   public ionicForm: FormGroup;
 
@@ -56,6 +58,8 @@ export class CandidateDetailComponent implements OnInit {
       //this.candidate.id=this.ionicForm.value.id;
       this.candidate.firstName = this.ionicForm.value.firstName;
       this.candidate.lastName = this.ionicForm.value.lastName;
+      this.candidate.fullName =
+        this.candidate.firstName + ' ' + this.candidate.lastName;
       this.candidateService
         .updateCandidate(this.candidate)
         .subscribe(() => this.goBack());

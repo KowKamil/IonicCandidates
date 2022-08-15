@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add candidate</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button type="submit">Add</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="ionicForm"> <!--TODO Add submit behavior-->
+    <ion-item>
+      <ion-label>First name:</ion-label>
+      <ion-input formControlName="firstName" type="text" placeholder="First name" value = ""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Last name:</ion-label>
+      <ion-input formControlName="lastName" type="text" placeholder="Last name" value=""></ion-input>
+    </ion-item>
+  </form>
+</ion-content>

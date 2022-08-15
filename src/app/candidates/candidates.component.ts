@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import { Component, OnInit } from '@angular/core';
 import { Candidate } from './candidate';
 import { CandidateService } from '../candidate.service';
@@ -12,7 +13,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./candidates.component.scss'],
 })
 export class CandidatesComponent implements OnInit {
-  candidates: Candidate[] = [];
+  public candidates: Candidate[] = [];
   public searchField: FormControl;
   public searchedCandidates: Candidate[];
 
@@ -66,5 +67,20 @@ export class CandidatesComponent implements OnInit {
   delete(candidate: Candidate): void {
     this.candidates = this.candidates.filter((c) => c !== candidate);
     this.candidateService.deleteCandidate(candidate.id).subscribe();
+  }
+
+  logList(): void {
+    for (const c of this.candidates) {
+      console.log(
+        'id: ' +
+          c.id +
+          ' firstName: ' +
+          c.firstName +
+          ' lastName: ' +
+          c.lastName +
+          ' fullName: ' +
+          c.fullName
+      );
+    }
   }
 }

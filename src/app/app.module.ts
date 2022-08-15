@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CandidatesComponent } from './candidates/candidates.component';
 import { CandidateDetailComponent } from './candidate-detail/candidate-detail.component';
 import { TopCandidatesComponent } from './top-candidates/top-candidates.component';
+import { CandidateAddComponent } from './candidate-add/candidate-add.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TopCandidatesComponent } from './top-candidates/top-candidates.componen
     CandidatesComponent,
     CandidateDetailComponent,
     TopCandidatesComponent,
+    CandidateAddComponent,
   ],
   imports: [
     BrowserModule,
