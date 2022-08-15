@@ -37,8 +37,6 @@ export class CandidateService {
   }
 
   updateCandidate(candidate: Candidate): Observable<any> {
-    // eslint-disable-next-line no-debugger
-    debugger;
     return this.http.put(this.candidatesUrl, candidate, this.httpOptions).pipe(
       tap((_) => this.log(`updated candidate id=${candidate.id}`)),
       catchError(this.handleError<any>('updateCandidate'))

@@ -45,9 +45,10 @@ export class CandidatesComponent implements OnInit {
   }
 
   getCandidates(): void {
-    this.candidateService
-      .getCandidates()
-      .subscribe((candidates) => (this.candidates = candidates));
+    this.candidateService.getCandidates().subscribe((candidates) => {
+      this.candidates = candidates;
+      this.logList();
+    });
   }
 
   add(firstName: string, lastName: string): void {

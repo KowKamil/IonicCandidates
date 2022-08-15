@@ -36,9 +36,16 @@ export class CandidateAddComponent implements OnInit {
     if (!firstName || !lastName) {
       return;
     }
+    console.log('Adding candidate named ' + fullName);
     this.candidateService
       .addCandidate({ firstName, lastName, fullName } as Candidate)
       .subscribe(() => this.goBack());
+  }
+
+  formSubmit(): void {
+    console.log('formSubmit called');
+    this.add(this.ionicForm.value.firstName, this.ionicForm.value.lastName);
+    console.log('formSubmit finished');
   }
 
   goBack(): void {

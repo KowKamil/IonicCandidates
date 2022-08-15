@@ -12,18 +12,18 @@
 
 <ion-content>
   <form [formGroup]="ionicForm">
-    <ion-item>
-      <ion-label>id:</ion-label>
-      <ion-input disabled=true type="number" value = "{{candidate?.id ?? 'id unknown'}}"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>First name:</ion-label>
-      <ion-input formControlName="firstName" type="text" value = "{{candidate?.firstName ?? 'firstName unknown'}}"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Last name:</ion-label>
-      <ion-input formControlName="lastName" type="text" value="{{candidate?.lastName ?? 'lastName unknown'}}"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label>id:</ion-label>
+        <ion-input disabled=true type="number" value = "{{candidate?.id ?? 'id unknown'}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>First name:</ion-label>
+        <ion-input formControlName="firstName" type="text" value = "{{candidate?.firstName ?? 'firstName unknown'}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Last name:</ion-label>
+        <ion-input formControlName="lastName" type="text" value="{{candidate?.lastName ?? 'lastName unknown'}}"></ion-input>
+      </ion-item>
   </form>
 </ion-content>
 
