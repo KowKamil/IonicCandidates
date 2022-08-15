@@ -22,16 +22,14 @@
         <!--<ion-label>{{c.firstName}}&nbsp;{{c.lastName}}</ion-label>-->
         <ion-label>{{c.fullName}}</ion-label>
       </ion-button>
-      <ion-fab>
-        <!--delete button here-->
-      </ion-fab>
+      <ion-button (click)="delete(c)">x</ion-button>
     </ion-list>
     <ion-fab horizontal="end" vertical="bottom">
       <ion-fab-button routerLink="/add">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
-    <ion-fab>
+    <ion-fab vertical="bottom">
       <ion-button (click)="logList()">log candidate list</ion-button>
     </ion-fab>
   </div>
