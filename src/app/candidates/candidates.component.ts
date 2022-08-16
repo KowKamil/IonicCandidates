@@ -40,14 +40,15 @@ export class CandidatesComponent implements OnInit {
       .subscribe((c) => (this.searchedCandidates = c));*/
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewDidEnter() {
     this.getCandidates();
   }
 
   getCandidates(): void {
     this.candidateService.getCandidates().subscribe((candidates) => {
       this.candidates = candidates;
-      this.logList();
     });
   }
 
