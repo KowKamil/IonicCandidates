@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Candidate } from './candidates/candidate';
-import { Observable, of, combineLatest } from 'rxjs';
+import { Observable, of, combineLatest, Subject } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,7 @@ export class CandidateService {
   };
 
   private candidatesUrl = 'api/candidates';
+  private candidatesChanged$ = new Subject<void>();
 
   constructor(
     private messageService: MessageService,
@@ -28,6 +29,10 @@ export class CandidateService {
     );
   }
 
+  watchCandidates(): Observable<Candidate[]> {
+    return this.candidatesChanged$.pipe(switchMap(() => this.getCandidates()));
+  }
+
   getCandidate(id: number): Observable<Candidate> {
     const url = `${this.candidatesUrl}/${id}`;
     return this.http.get<Candidate>(url).pipe(
@@ -38,7 +43,10 @@ export class CandidateService {
 
   updateCandidate(candidate: Candidate): Observable<any> {
     return this.http.put(this.candidatesUrl, candidate, this.httpOptions).pipe(
-      tap((_) => this.log(`updated candidate id=${candidate.id}`)),
+      tap((_) => {
+        this.log(`updated candidate id=${candidate.id}`);
+        this.candidatesChanged$.next();
+      }),
       catchError(this.handleError<any>('updateCandidate'))
     );
   }
@@ -47,9 +55,10 @@ export class CandidateService {
     return this.http
       .post<Candidate>(this.candidatesUrl, candidate, this.httpOptions)
       .pipe(
-        tap((newCandidate: Candidate) =>
-          this.log(`added candidate w/ id=${newCandidate.id}`)
-        ),
+        tap((newCandidate: Candidate) => {
+          this.log(`added candidate w/ id=${newCandidate.id}`);
+          this.candidatesChanged$.next();
+        }),
         catchError(this.handleError<Candidate>('addCandidate'))
       );
   }
@@ -57,7 +66,10 @@ export class CandidateService {
   deleteCandidate(id: number): Observable<Candidate> {
     const url = `${this.candidatesUrl}/${id}`;
     return this.http.delete<Candidate>(url, this.httpOptions).pipe(
-      tap((_) => this.log(`deleted candidate id=${id}`)),
+      tap((_) => {
+        this.log(`deleted candidate id=${id}`);
+        this.candidatesChanged$.next();
+      }),
       catchError(this.handleError<Candidate>('deleteCandidate'))
     );
   }
