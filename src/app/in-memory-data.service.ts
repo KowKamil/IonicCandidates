@@ -74,6 +74,30 @@ export class InMemoryDataService implements InMemoryDbService {
         lastName: 'Parris',
         fullName: 'Samuel Parris',
       },
+      {
+        id: 21,
+        firstName: 'Samuel',
+        lastName: 'Sewall',
+        fullName: 'Samuel Sewall',
+      },
+      {
+        id: 22,
+        firstName: 'Thomas',
+        lastName: 'Dansforth',
+        fullName: 'Thomas Dansforth',
+      },
+      {
+        id: 23,
+        firstName: 'William',
+        lastName: 'Hobbs',
+        fullName: 'William Hobbs',
+      },
+      {
+        id: 24,
+        firstName: 'William',
+        lastName: 'Phips',
+        fullName: 'William Phips',
+      },
     ];
     return { candidates };
   }
