@@ -8,12 +8,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" scrollY="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Title</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
     <ion-list id="inbox-list" *ngFor="let c of candidates">
       <ion-button routerLink="/detail/{{c.id}}">
@@ -23,10 +17,12 @@
       </ion-button>
       <ion-button (click)="delete(c)">x</ion-button>
     </ion-list>
-    <ion-fab horizontal="end" vertical="bottom">
-      <ion-fab-button routerLink="/add">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
   </div>
 </ion-content>
+<ion-footer>
+  <ion-fab horizontal="end" vertical="bottom">
+    <ion-fab-button routerLink="/add">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-footer>
