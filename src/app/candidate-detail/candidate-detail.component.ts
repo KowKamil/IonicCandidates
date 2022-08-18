@@ -9,6 +9,7 @@ import { Candidate } from '../candidates/candidate';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CandidateService } from '../candidate.service';
+import { Validators } from '@angular/forms';
 
 //TODO: fix editing so that it's results are visible on candidates view
 @Component({
@@ -29,13 +30,17 @@ export class CandidateDetailComponent implements OnInit {
     public formBuilder: FormBuilder
   ) {
     this.ionicForm = this.formBuilder.group({
-      firstName: [''],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: [''],
     });
   }
 
   public ngOnInit(): void {
     this.getCandidate();
+  }
+
+  public ionViewDidEnter(): void {
+    console.log('Entered candidate-detail component');
   }
 
   getCandidate(): void {
@@ -54,7 +59,7 @@ export class CandidateDetailComponent implements OnInit {
   }
 
   save(): void {
-    if (this.candidate) {
+    if (this.candidate || this.ionicForm.valid) {
       //this.candidate.id=this.ionicForm.value.id;
       this.candidate.firstName = this.ionicForm.value.firstName;
       this.candidate.lastName = this.ionicForm.value.lastName;
