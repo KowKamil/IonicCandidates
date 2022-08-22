@@ -14,11 +14,13 @@
     </ion-toolbar>
   </ion-header>
   <div id="container">
-    <ion-list id="inbox-list" *ngFor="let c of candidates">
-      <ion-button routerLink="/detail/{{c.id}}">
-        <ion-badge>{{c.id}}</ion-badge>&nbsp;
-        <ion-label>{{c.firstName}}&nbsp;{{c.lastName}}</ion-label>
-      </ion-button>
+    <ion-list id="inbox-list" *ngFor="let candidate of candidates; let i = index">
+      <ion-card button="true" routerLink="/detail/{{candidate.id}}">
+        <ion-card-title>{{i+1}}.</ion-card-title>
+        <ion-card-content>
+          id:{{candidate.id}}&nbsp;{{candidate.fullName}}
+        </ion-card-content>
+      </ion-card>
     </ion-list>
     <ion-fab horizontal="end" vertical="bottom">
       <ion-fab-button routerLink="/add">
